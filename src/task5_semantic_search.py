@@ -37,6 +37,10 @@ def semantic_search(query: str, top_k: int = 10) -> list[dict]:
             continue
         seen_ids.add(item_id)
         score = max(0.0, min(1.0, 1.0 - dist))
+        # Chroma không lưu key metadata có giá trị None (chỉ nhận str/int/float/bool),
+        # nên "url" bị rụng khỏi kết quả đối với chunk không có URL (tài liệu legal).
+        # Khôi phục lại key này để đúng contract DocumentMetadata (url: str | None).
+        meta = {**meta, "url": meta.get("url")}
         results.append({
             "id": item_id,
             "content": content,

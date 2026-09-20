@@ -27,7 +27,6 @@ CHUNKING_METHOD = "recursive"
 
 EMBEDDING_PROVIDER = os.getenv("EMBEDDING_PROVIDER", "openai").lower()
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "text-embedding-3-small")
-EMBEDDING_DIM = 1536 if "small" in EMBEDDING_MODEL else 1024
 
 COLLECTION_NAME = "rag_documents"
 
@@ -159,7 +158,20 @@ def embed_chunks(chunks: list[dict]) -> list[dict]:
     all_vectors = []
     for i in range(0, len(texts), batch_size):
         batch_texts = texts[i : i + batch_size]
-        all_vectors.extend(embed_texts(batch_texts))
+        batch_vectors = embed_texts(batch_texts)
+        if len(batch_vectors) != len(batch_texts):
+            raise ValueError(
+                f"embed_texts trả về {len(batch_vectors)} vector cho "
+                f"{len(batch_texts)} chunk (batch bắt đầu tại index {i})"
+            )
+        all_vectors.extend(batch_vectors)
+
+    dims = {len(vector) for vector in all_vectors}
+    if len(dims) > 1:
+        raise ValueError(
+            f"Embedding không đồng nhất chiều: {sorted(dims)}. "
+            "Task 4 và Task 5 phải dùng chung embedding model/dimension."
+        )
 
     for chunk, vector in zip(chunks, all_vectors):
         chunk["embedding"] = vector

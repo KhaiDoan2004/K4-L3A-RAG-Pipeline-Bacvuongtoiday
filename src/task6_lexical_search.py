@@ -67,6 +67,17 @@ def build_bm25_index(corpus: list[dict]):
     return BM25Index(tokenized)
 
 
+_BM25_INDEX_CACHE: dict[str, object] = {"corpus": None, "index": None}
+
+
+def _get_bm25_index(corpus: list[dict]) -> BM25Index:
+    """Tái sử dụng BM25 index đã build cho cùng corpus, tránh tính lại IDF mỗi query."""
+    if _BM25_INDEX_CACHE["corpus"] is not corpus:
+        _BM25_INDEX_CACHE["corpus"] = corpus
+        _BM25_INDEX_CACHE["index"] = build_bm25_index(corpus)
+    return _BM25_INDEX_CACHE["index"]
+
+
 def lexical_search(query: str, top_k: int = 10) -> list[dict]:
     """Trả về BM25 SearchResult theo score giảm dần."""
     corpus = CORPUS if CORPUS else get_corpus()
@@ -77,7 +88,7 @@ def lexical_search(query: str, top_k: int = 10) -> list[dict]:
     if not tokens:
         return []
 
-    bm25 = build_bm25_index(corpus)
+    bm25 = _get_bm25_index(corpus)
     scores = np.array(bm25.get_scores(tokens))
     indices = np.argsort(scores)[::-1]
 

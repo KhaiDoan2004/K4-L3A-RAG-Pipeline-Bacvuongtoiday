@@ -132,6 +132,89 @@ def test_semantic_search_uses_shared_embedding_and_contract(monkeypatch):
     validate_search_results(output, top_k=2, expected_method="dense")
 
 
+def test_embed_chunks_rejects_mismatched_vector_count(monkeypatch):
+    import src.task4_chunking_indexing as task4
+
+    chunks = [
+        {"id": "a::chunk-0", "content": "one", "metadata": metadata(chunk_index=0)},
+        {"id": "a::chunk-1", "content": "two", "metadata": metadata(chunk_index=1)},
+    ]
+    monkeypatch.setattr(task4, "embed_texts", lambda texts: [[0.1, 0.2]])
+
+    with pytest.raises(ValueError, match="vector"):
+        task4.embed_chunks(chunks)
+
+
+def test_embed_chunks_rejects_inconsistent_dimensions(monkeypatch):
+    import src.task4_chunking_indexing as task4
+
+    chunks = [
+        {"id": "a::chunk-0", "content": "one", "metadata": metadata(chunk_index=0)},
+        {"id": "a::chunk-1", "content": "two", "metadata": metadata(chunk_index=1)},
+    ]
+    monkeypatch.setattr(task4, "embed_texts", lambda texts: [[0.1, 0.2], [0.1, 0.2, 0.3]])
+
+    with pytest.raises(ValueError, match="chiều"):
+        task4.embed_chunks(chunks)
+
+
+def test_lexical_search_reuses_bm25_index_across_calls(monkeypatch):
+    import src.task6_lexical_search as lexical
+
+    corpus = [
+        {
+            "id": "chunk-0",
+            "content": "tuition fee payment policy",
+            "metadata": metadata(chunk_index=0),
+        },
+        {
+            "id": "chunk-1",
+            "content": "library opening hours",
+            "metadata": metadata(source="library.md", chunk_index=1),
+        },
+    ]
+    monkeypatch.setattr(lexical, "CORPUS", corpus)
+    monkeypatch.setitem(lexical._BM25_INDEX_CACHE, "corpus", None)
+    monkeypatch.setitem(lexical._BM25_INDEX_CACHE, "index", None)
+
+    build_calls = {"count": 0}
+    original_build = lexical.build_bm25_index
+
+    def counting_build(passed_corpus):
+        build_calls["count"] += 1
+        return original_build(passed_corpus)
+
+    monkeypatch.setattr(lexical, "build_bm25_index", counting_build)
+
+    lexical.lexical_search("tuition fee", top_k=2)
+    lexical.lexical_search("library hours", top_k=2)
+
+    assert build_calls["count"] == 1
+
+
+def test_semantic_search_restores_url_dropped_by_chroma(monkeypatch):
+    """Chroma không lưu metadata value None nên key 'url' có thể bị rụng khi query."""
+    import src.task5_semantic_search as semantic
+
+    meta_without_url = {"source": "a.md", "title": "A", "doc_type": "legal", "chunk_index": 0}
+
+    class FakeCollection:
+        def query(self, **kwargs):
+            return {
+                "ids": [["chunk-0"]],
+                "documents": [["No-url legal content"]],
+                "metadatas": [[meta_without_url]],
+                "distances": [[0.2]],
+            }
+
+    monkeypatch.setattr(semantic, "embed_texts", lambda texts: [[0.1, 0.2]])
+    monkeypatch.setattr(semantic, "get_collection", lambda: FakeCollection())
+    output = semantic.semantic_search("query", top_k=1)
+
+    validate_search_results(output, top_k=1, expected_method="dense")
+    assert output[0]["metadata"]["url"] is None
+
+
 def test_lexical_search_returns_bm25_contract(monkeypatch):
     import src.task6_lexical_search as lexical
 
