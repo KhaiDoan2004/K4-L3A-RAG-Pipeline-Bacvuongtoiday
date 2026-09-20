@@ -103,7 +103,7 @@ pytest tests/test_acceptance.py -q
 pytest -q
 ```
 
-Kết quả gần nhất: **20 tests passed** (15 contract, 5 acceptance).
+Kết quả gần nhất: **24 tests passed** (19 contract, 5 acceptance).
 
 ## Thành phần nộp bài
 
