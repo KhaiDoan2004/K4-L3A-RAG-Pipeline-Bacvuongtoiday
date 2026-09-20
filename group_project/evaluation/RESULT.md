@@ -33,8 +33,8 @@ Hai config dùng cùng golden dataset, generator (GPT-4o), evaluator, prompt và
 
 ## A/B comparison
 
-- Cấu hình tốt hơn: **Config B — Hybrid + RRF** vượt trội hơn Config A trên tất cả các chỉ số chính (đặc biệt là Context Precision và Answer Relevance).
-- Evidence: RRF kết hợp từ khóa chính xác BM25 giúp các truy vấn chứa mã môn học (ví dụ: `INT1478`, `INT1478_CLC`, `INT14175`), mốc thời gian cụ thể và tên cán bộ phụ trách (`cô Hoàng Kim Cúc`, `cô Đỗ Thúy Hằng`) được đưa lên Top 1 chính xác hơn so với chỉ dùng Dense Semantic đơn thuần.
+- Cấu hình tốt hơn trên benchmark hiện tại: **Config A — Dense-only**, với điểm trung bình `0.826`, cao hơn Config B (`0.739`) là `0.087` điểm.
+- Evidence: Config A cao hơn ở Faithfulness (`+0.207`), Answer relevance (`+0.006`) và Context recall (`+0.134`); Context precision của hai cấu hình bằng nhau (`0.783`). BM25 vẫn hữu ích với mã học phần và tên riêng, nhưng cách RRF/top-k hiện tại làm giảm recall và đưa thêm context không đủ căn cứ vào một số câu hỏi.
 - Trade-off về latency/cost: Config B tính toán thêm một lượt BM25 bằng CPU trên tập chunk cục bộ (tăng độ trễ ~15ms, hoàn toàn không tốn thêm chi phí API hay mạng so với Config A).
 
 ## Worst performers
@@ -49,7 +49,7 @@ Hai config dùng cùng golden dataset, generator (GPT-4o), evaluator, prompt và
 
 | Priority | Action | Evidence from failure analysis | Expected impact | How to verify |
 | -------: | ------ | ------------------------------ | --------------- | ------------- |
-|        1 | Duy trì cấu hình mặc định Hybrid + RRF | Khắc phục triệt để lỗi tìm kiếm mã môn học và tên riêng so với Dense-only | Tăng Context Precision lên trên 0.90 | Chạy lại benchmark test suite |
+|        1 | Dùng Dense-only làm cấu hình mặc định hiện tại; giữ Hybrid + RRF ở chế độ thử nghiệm | Benchmark cho thấy Dense cao hơn Hybrid `0.087` điểm trung bình | Tránh suy giảm Faithfulness và Context Recall | Chạy lại cùng 15 câu sau mỗi lần chỉnh RRF/top-k |
 |        2 | Nâng cấp Document Layout Splitter cho bảng biểu | Các bảng biểu phân công đồ án có nhiều cột số liệu dễ bị đứt dòng | Tăng độ bao phủ thông tin bảng biểu | So sánh Context Recall trên các câu hỏi bảng biểu |
 |        3 | Calibrate ngưỡng `SCORE_THRESHOLD` theo domain thực tế | Ngưỡng 0.30 phân biệt tốt câu hỏi trong ngành và ngoài lề | Giảm tỷ lệ hallucination câu hỏi ngoài lề về 0% | Kiểm thử với 10 câu hỏi ngoài ngành |
 

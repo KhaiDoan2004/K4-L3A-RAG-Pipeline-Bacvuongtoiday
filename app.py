@@ -137,11 +137,17 @@ with tab_eval:
             st.markdown(f"- Context Precision: `{sb['precision']}`")
             st.markdown(f"👉 **Điểm trung bình:** `{sb['average']}`")
 
-        st.success(
-            "💡 **Kết luận thực nghiệm:** Cấu hình **Hybrid + RRF** vượt trội hơn Dense-only trên toàn bộ các chỉ số. "
-            "Nhờ có BM25, các truy vấn chứa mã định danh (mã học phần INT1478, số tín chỉ, tên cán bộ giáo vụ) "
-            "được tìm kiếm chính xác 100%, không bị sai lệch trong không gian embedding."
-        )
+        if sb["average"] > sa["average"]:
+            st.success(
+                "💡 **Kết luận thực nghiệm:** Hybrid + RRF có điểm trung bình cao hơn Dense-only "
+                f"({sb['average']:.3f} so với {sa['average']:.3f})."
+            )
+        else:
+            st.warning(
+                "💡 **Kết luận thực nghiệm:** Dense-only có điểm trung bình cao hơn Hybrid + RRF "
+                f"({sa['average']:.3f} so với {sb['average']:.3f}). Hybrid cần tiếp tục hiệu chỉnh "
+                "RRF/top-k trước khi dùng làm cấu hình mặc định."
+            )
 
         st.markdown("---")
         with st.expander("📄 Xem toàn văn Báo cáo nhóm (RESULT.md)"):

@@ -1,84 +1,119 @@
-# Day 8 — RAG Pipeline
+# PTIT RAG — Tra cứu thực tập và tốt nghiệp
 
-## Mục tiêu
+Chatbot RAG của nhóm **Bacvuongtoiday** trả lời câu hỏi về kế hoạch thực tập, điều kiện làm đồ án/khóa luận và các thông báo tốt nghiệp của Học viện Công nghệ Bưu chính Viễn thông (PTIT). Hệ thống truy xuất từ tài liệu nhóm tự thu thập, sinh câu trả lời có trích dẫn và hiển thị nguồn, phương thức retrieval cùng điểm số trên Streamlit.
 
-Mỗi nhóm xây dựng một chatbot RAG trả lời câu hỏi từ bộ tài liệu do nhóm thu thập. Sản phẩm phải có hybrid retrieval, citation, giao diện chat và báo cáo đánh giá.
+## Dữ liệu
 
-Nhóm tự chọn bài toán và thu thập dữ liệu phù hợp; repo không cung cấp dữ liệu mẫu.
+- 3 tài liệu PDF chính sách/thông báo PTIT trong `data/landing/legal/`.
+- 5 bài viết công khai trong `data/landing/news/`, lưu JSON với `url`, `title`, `date_crawled`, `content_markdown`.
+- 8 tài liệu Markdown chuẩn hóa trong `data/standardized/`; đây là đầu vào duy nhất của bước chunk và index.
+- Metadata `source`, `title`, `doc_type` (`legal` hoặc `news`) và `url` được giữ xuyên suốt pipeline.
 
-## Sản phẩm phải nộp
+## Kiến trúc
 
-- Repository nhóm chạy được.
-- Tối thiểu 3 tài liệu chính sách và 5 bài viết/page do nhóm tự thu thập.
-- Pipeline: convert → chunk → index → dense + BM25 → RRF → fallback → generation có citation.
-- Chatbot Streamlit hiển thị câu trả lời và nguồn đã dùng.
-- Golden dataset tối thiểu 15 câu; đánh giá 4 metric và so sánh A/B.
-- `group_project/evaluation/RESULT.md`.
-- Mỗi thành viên nộp báo cáo cá nhân theo template trong `group_project/ịndividual/INDIVIDUAL_REPORT.md`.
+```text
+PDF/DOCX + bài viết web
+        ↓
+Markdown chuẩn hóa
+        ↓
+Recursive chunking (500 ký tự, overlap 50)
+        ↓
+Embedding → ChromaDB (cosine) → Dense Search ─┐
+                                               ├→ RRF → threshold/fallback → LLM → citation
+Markdown chunks → BM25 Lexical Search ─────────┘
+```
 
-## Quick start
+| Task | Chức năng |
+|---:|---|
+| 1–3 | Thu thập PDF, crawl bài viết và chuẩn hóa Markdown |
+| 4 | Chunk, embedding và index vào ChromaDB |
+| 5 | Dense semantic search |
+| 6 | BM25 lexical search |
+| 7 | Reciprocal Rank Fusion (RRF) |
+| 8 | PageIndex vectorless fallback an toàn |
+| 9 | Retrieval pipeline, threshold theo dense cosine score |
+| 10 | Sinh câu trả lời có citation và safe refusal |
 
-```bash
+## Cài đặt
+
+Yêu cầu Python 3.10–3.13.
+
+```powershell
 python -m venv .venv
-source .venv/bin/activate       # Windows: .venv\Scripts\activate
+.\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip setuptools wheel
 python -m pip install -e ".[dev]"
 python -m playwright install chromium
-cp .env.example .env
+Copy-Item .env.example .env
 ```
 
-Điền API key cần dùng trong `.env`; không commit file này.
+Cấu hình `.env` và không commit file này:
 
-```bash
-# 1. Thu thập và chuẩn hoá
+```dotenv
+LLM_PROVIDER=openai
+LLM_MODEL=gpt-4o
+OPENAI_API_KEY=your_key
+EMBEDDING_PROVIDER=openai
+EMBEDDING_MODEL=text-embedding-3-small
+SCORE_THRESHOLD=0.30
+PAGEINDEX_API_KEY=
+```
+
+Generation cũng hỗ trợ Gemini và Anthropic theo `.env.example`.
+
+## Chạy pipeline
+
+```powershell
 python -m src.task1_collect_legal_docs
 python -m src.task2_crawl_news
 python -m src.task3_convert_markdown
-
-# 2. Index và kiểm tra contract
 python -m src.task4_chunking_indexing
-pytest -q
-
-# 3. Chạy sản phẩm
 streamlit run app.py
 ```
 
-## Lộ trình 3 giờ
+Task 1 kiểm tra các PDF tải thủ công. Task 2 chỉ crawl URL công khai; nếu gặp WAF/captcha, chọn nguồn khác thay vì vượt cơ chế bảo vệ.
 
-| Mốc                  | Thời gian | Kết quả cần có                           |
-| -------------------- | --------: | ---------------------------------------- |
-| 0. Setup             |   10 phút | Môi trường và `.env` sẵn sàng            |
-| 1. Data              |   25 phút | ≥3 legal, ≥5 news, Markdown đã chuẩn hoá |
-| 2. Index & search    |   30 phút | ChromaDB, dense search và BM25 chạy được |
-| 3. Fusion & fallback |   25 phút | RRF và fallback tuân thủ contract        |
-| 4. Generation & UI   |   30 phút | Chatbot trả lời có citation              |
-| 5. Evaluation        |   30 phút | 15+ Q&A, 4 metric, A/B comparison        |
-| 6. Demo & handoff    |   30 phút | Test, report, demo và push repository    |
+Ứng dụng `app.py` có tab chatbot hiển thị answer/source/method/score và tab evaluation trình bày benchmark A/B.
 
-## Lưu ý quy tắc để có code quality tốt:
+## Đánh giá
 
-- Dense và BM25 nên cùng trả về `SearchResult` theo một schema.
-- RRF chỉ nên dùng để gộp thứ hạng và chỉ chạy một lần.
-- Fallback dùng cosine score gốc của dense retrieval.
-- Threshold phải được hiệu chỉnh trên query in domain và out of domain, không có một con số đúng cho mọi corpus.
+Golden dataset tại `group_project/evaluation/golden_dataset.json` gồm 15 câu. Hai cấu hình dùng cùng dataset, generator, evaluator và `top_k=3`:
 
-## Tài liệu
+| Metric | Dense-only | Hybrid + RRF | Delta B−A |
+|---|---:|---:|---:|
+| Faithfulness | 0.860 | 0.653 | -0.207 |
+| Answer relevance | 0.993 | 0.987 | -0.006 |
+| Context recall | 0.667 | 0.533 | -0.134 |
+| Context precision | 0.783 | 0.783 | 0.000 |
+| **Average** | **0.826** | **0.739** | **-0.087** |
 
-- [Module contracts](docs/MODULE_CONTRACTS.md): schema, interface và invariant mà code/test nên tuân theo.
-- [Step-by-step guide](docs/STEP_BY_STEP.md): thứ tự triển khai và tiêu chí hoàn thành từng bước.
-- [Grading rubric](docs/GRADING_RUBRIC.md): Rubric thang điểm.
-- [Individual report](group_project/ịndividual/INDIVIDUAL_REPORT.md): template báo cáo cá nhân.
-- [Suggested topics](docs/SUGGESTED_TOPICS.md): danh sách chủ đề tham khảo, không bắt buộc.
+Trên benchmark hiện tại, **Dense-only tốt hơn Hybrid + RRF**. Hybrid vẫn hữu ích với mã học phần và tên riêng nhưng cần hiệu chỉnh RRF/top-k trước khi chọn làm mặc định. Xem chi tiết tại `group_project/evaluation/RESULT.md`.
 
-## Kiểm tra
+Chạy lại benchmark (cần API key):
 
-```bash
-# Contract tests
+```powershell
+python -m src.evaluate
+```
+
+## Kiểm thử
+
+```powershell
 pytest tests/test_contracts.py -q
-
-# Acceptance tests
 pytest tests/test_acceptance.py -q
-
-# Toàn bộ
 pytest -q
 ```
+
+Kết quả gần nhất: **20 tests passed** (15 contract, 5 acceptance).
+
+## Thành phần nộp bài
+
+```text
+data/landing/                 dữ liệu gốc
+data/standardized/            Markdown chuẩn hóa
+group_project/evaluation/     golden dataset và báo cáo A/B
+reports/                      báo cáo cá nhân từng thành viên
+src/                          pipeline Task 1–10
+app.py                        chatbot Streamlit
+```
+
+Không commit `.env`, API key, `.venv/`, cache hoặc dữ liệu ChromaDB sinh cục bộ.
