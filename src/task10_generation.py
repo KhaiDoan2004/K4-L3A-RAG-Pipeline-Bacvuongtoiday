@@ -44,10 +44,13 @@ def format_context(chunks: list[dict]) -> str:
     """Tạo context có title và source label phục vụ citation."""
     parts = []
     for index, chunk in enumerate(chunks, 1):
+
         meta = chunk.get("metadata", {})
         title = meta.get("title", "Tài liệu")
+
         source = meta.get("source", "Nguồn")
         parts.append(
+
             f"[Tài liệu {index} | Title: {title} | Source: {source}]\n{chunk['content']}"
         )
     return "\n\n---\n\n".join(parts)
@@ -95,9 +98,12 @@ def call_llm(system_prompt: str, user_message: str) -> str:
             raise ValueError("ANTHROPIC_API_KEY chưa được thiết lập trong .env")
         client = anthropic.Anthropic(api_key=api_key)
         response = client.messages.create(
+
             model=model_name or "claude-3-5-sonnet-20241022",
-            max_tokens=1024,
+            max_tokens = 1024,
+
             system=system_prompt,
+            
             messages=[{"role": "user", "content": user_message}],
             temperature=TEMPERATURE,
         )

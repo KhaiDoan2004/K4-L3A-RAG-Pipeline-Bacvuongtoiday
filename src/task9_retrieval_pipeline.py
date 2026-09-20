@@ -28,6 +28,7 @@ def retrieve(
     use_reranking: bool = True,
 ) -> list[dict]:
     """Trả về hybrid hoặc pageindex SearchResult."""
+
     if not query.strip() or top_k <= 0:
         return []
     dense = semantic_search(query, top_k=top_k * 2)
@@ -46,7 +47,6 @@ def retrieve(
         except Exception:
             pass
     return hybrid[:top_k]
-
 
 if __name__ == "__main__":
     test_query = "kế hoạch thực tập tốt nghiệp và điều kiện làm khóa luận"
