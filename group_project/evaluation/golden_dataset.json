@@ -1,0 +1,77 @@
+[
+  {
+    "question": "Điều kiện để sinh viên D22 khối ngành kỹ thuật được làm Đồ án tốt nghiệp là gì?",
+    "expected_answer": "Sinh viên cần hoàn thành báo cáo thực tập tốt nghiệp cuối khóa và không đang trong thời gian bị kỷ luật phải đình chỉ học tập.",
+    "expected_context": "Sinh viên đã hoàn thành báo cáo thực tập tốt nghiệp cuối khóa và không đang trong thời gian bị kỷ luật phải đình chỉ học tập được phép đăng ký thực hiện tích lũy khối kiến thức tốt nghiệp theo hình thức làm Đồ án tốt nghiệp."
+  },
+  {
+    "question": "Thời gian đăng ký online làm đồ án tốt nghiệp của sinh viên D22 khối ngành kỹ thuật là khi nào?",
+    "expected_answer": "Từ 12h00 ngày 11/09/2026 đến 24h00 ngày 14/09/2026 trên hệ thống QLĐT.",
+    "expected_context": "Thời gian đăng ký: Sinh viên đăng ký online trên hệ thống QLĐT từ 12h00 ngày 11/09/2026 đến 24h ngày 14/09/2026."
+  },
+  {
+    "question": "Nếu sinh viên D22 có thắc mắc về kết quả học tập xét tốt nghiệp thì gửi email cho ai và hạn chót khi nào?",
+    "expected_answer": "Sinh viên gửi email về địa chỉ cô Hoàng Kim Cúc (hkcuc@ptit.edu.vn) trước 16h30 ngày 14/09/2026, chỉ chấp nhận đơn gửi từ email do Học viện cấp.",
+    "expected_context": "Các trường hợp có thắc mắc về kết quả học tập đề nghị gửi email về địa chỉ cô Hoàng Kim Cúc: hkcuc@ptit.edu.vn (chỉ chấp nhận với các đơn gửi từ email do Học viện cấp) trước 16h30 ngày 14/09/2026."
+  },
+  {
+    "question": "Mã học phần và số tín chỉ của Đồ án tốt nghiệp ngành Công nghệ thông tin là gì?",
+    "expected_answer": "Mã học phần là INT1478 và có số tín chỉ là 6.",
+    "expected_context": "Công nghệ thông tin | Mã học phần: INT1478 | Tên học phần: Đồ án tốt nghiệp | Số TC: 6"
+  },
+  {
+    "question": "Mã học phần Đồ án tốt nghiệp của ngành Công nghệ thông tin chất lượng cao là gì và có bao nhiêu tín chỉ?",
+    "expected_answer": "Mã học phần là INT1478_CLC và có số tín chỉ là 8.",
+    "expected_context": "Công nghệ thông tin chất lượng cao | INT1478_CLC | Đồ án tốt nghiệp | 8 tín chỉ"
+  },
+  {
+    "question": "Mã học phần Đồ án tốt nghiệp ngành Khoa học máy tính khóa D22 là gì và bao nhiêu tín chỉ?",
+    "expected_answer": "Mã học phần là INT14175 và có 6 tín chỉ.",
+    "expected_context": "Khoa học máy tính | Mã học phần: INT14175 | Tên học phần: Đồ án tốt nghiệp | Số TC: 6"
+  },
+  {
+    "question": "Thời gian đăng ký học phần Thực tập tốt nghiệp online cho sinh viên D21 khối ngành kỹ thuật là khi nào?",
+    "expected_answer": "Thời gian đăng ký online từ ngày 26/5 đến ngày 28/5/2025.",
+    "expected_context": "Thời gian đăng ký thực tập online: 26/5 – 28/5/2025."
+  },
+  {
+    "question": "Thời gian thực tập tốt nghiệp theo đề cương của sinh viên D21 khối ngành kỹ thuật kéo dài bao lâu?",
+    "expected_answer": "Thực tập kéo dài 07 tuần từ ngày 30/6/2025 đến ngày 15/8/2025 (riêng lớp E20CN thực tập 08 tuần từ 30/6 đến 22/8/2025).",
+    "expected_context": "Thực tập theo nội dung, đề cương được phân công (07 tuần): từ 30/6-15/8/2025. Riêng đối với các lớp E20CN thực tập 08 tuần từ 30/6-22/8/2025."
+  },
+  {
+    "question": "Thời gian bảo vệ Đồ án tốt nghiệp của sinh viên D21 khối ngành kỹ thuật là khoảng thời gian nào?",
+    "expected_answer": "Từ ngày 15/12/2025 đến ngày 28/12/2025.",
+    "expected_context": "Bảo vệ Đồ án tốt nghiệp: 15/12 - 28/12/2025"
+  },
+  {
+    "question": "Khi có vướng mắc trong quá trình thực tập tốt nghiệp D21, sinh viên liên hệ ai ở phòng Giáo vụ?",
+    "expected_answer": "Liên hệ cô Đỗ Thúy Hằng tại phòng Giáo vụ theo số điện thoại 0243.854.7797.",
+    "expected_context": "Trong quá trình triển khai, nếu có vướng mắc đề nghị các đơn vị, sinh viên liên hệ phòng Giáo vụ (cô Đỗ Thúy Hằng, 0243.854.7797) để được hướng dẫn, giải đáp."
+  },
+  {
+    "question": "Thời gian đăng ký lịch học (thời khóa biểu) theo tiến trình rút gọn học kỳ 1 năm học 2026-2027 là khi nào?",
+    "expected_answer": "Từ 12h00 ngày 18/06/2026 đến 24h00 ngày 20/06/2026 trên hệ thống Quản lý đào tạo (qldt.ptit.edu.vn).",
+    "expected_context": "Thời gian: từ 12h00 ngày 18/06/2026 đến 24h00 ngày 20/06/2026 (Điều chỉnh lịch so với kế hoạch ban đầu) trên hệ thống Quản lý đào tạo (https://qldt.ptit.edu.vn)."
+  },
+  {
+    "question": "Sinh viên đăng ký học theo tiến trình rút gọn có được đăng ký học lại, học cải thiện điểm trong đợt này không?",
+    "expected_answer": "Không được phép đăng ký học lại, học cải thiện trong thời gian này.",
+    "expected_context": "Không được đăng ký học lại, học cải thiện trong thời gian này; Sinh viên phải đăng ký đầy đủ các môn học theo tiến trình đào tạo rút gọn của kỳ học."
+  },
+  {
+    "question": "Nếu sinh viên vi phạm không đăng ký đủ môn học theo tiến trình rút gọn thì bị xử lý ra sao?",
+    "expected_answer": "Toàn bộ kết quả đăng ký trong thời gian này sẽ bị hủy và sinh viên phải đăng ký cùng với đợt của khóa ngành mình theo tiến trình chuẩn.",
+    "expected_context": "Nếu sinh viên vi phạm: không đăng ký đủ môn học theo tiến trình rút gọn thì toàn bộ kết quả đăng ký trong thời gian này sẽ bị hủy và sinh viên khi đó phải đăng ký cùng với đợt của khóa ngành mình theo tiến trình chuẩn."
+  },
+  {
+    "question": "Các lớp thời khóa biểu nào học theo tiến trình rút gọn sẽ học tại cơ sở Ngọc Trục?",
+    "expected_answer": "Các lớp thời khóa biểu D24GA, D25GA, D23 (trừ các lớp CLC) học tại cơ sở Ngọc Trục.",
+    "expected_context": "Các lớp thời khóa biểu D24GA, D25GA, D23 (trừ các lớp CLC) học tại cơ sở Ngọc Trục. Sinh viên khóa 2024, 2025 cần cân nhắc kỹ khi đăng ký để đảm bảo điều kiện học tập."
+  },
+  {
+    "question": "Đối với sinh viên khóa 2021 khối ngành kỹ thuật, có tổ chức học các học phần thay thế tốt nghiệp không?",
+    "expected_answer": "Không, toàn bộ sinh viên đã hoàn thành thực tập tốt nghiệp sẽ làm Đồ án tốt nghiệp và không tổ chức học các học phần thay thế tốt nghiệp.",
+    "expected_context": "Sinh viên đã hoàn thành Thực tập tốt nghiệp (TTTN) sẽ đăng ký làm ĐATN. (Toàn bộ sinh viên sẽ làm ĐATN, không tổ chức học các học phần thay thế tốt nghiệp)"
+  }
+]

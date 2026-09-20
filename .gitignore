@@ -38,12 +38,16 @@ htmlcov/
 # Temp PDF conversion cache
 data/_tmp_pdf/
 
-# Temp / cache
+# Temp / cache / scratch
 .pytest_cache/
 *.tmp
 *.log
 pageindex_doc_ids.json
 pageindex_pdfs/
+kaak.md
+kaak*
+image.png
+image*
 
 # Jupyter
 .ipynb_checkpoints/

@@ -1,0 +1,242 @@
+{
+  "date": "2026-09-20 16:02:08",
+  "generator": "gpt-4o",
+  "evaluator": "gpt-4o",
+  "embedding": "text-embedding-3-small",
+  "num_cases": 15,
+  "scores_a": {
+    "faithfulness": 0.86,
+    "relevance": 0.993,
+    "recall": 0.667,
+    "precision": 0.783,
+    "average": 0.826
+  },
+  "scores_b": {
+    "faithfulness": 0.653,
+    "relevance": 0.987,
+    "recall": 0.533,
+    "precision": 0.783,
+    "average": 0.739
+  },
+  "delta": {
+    "faithfulness": -0.207,
+    "relevance": -0.006,
+    "recall": -0.134,
+    "precision": 0.0,
+    "average": -0.087
+  },
+  "cases_a": [
+    {
+      "answer": "Điều kiện để sinh viên D22 khối ngành kỹ thuật được làm Đồ án tốt nghiệp là sinh viên phải hoàn thành báo cáo thực tập tốt nghiệp cuối khóa và không đang trong thời gian bị kỷ luật phải đình chỉ học tập. Sinh viên đáp ứng các điều kiện này sẽ được phép đăng ký thực hiện tích lũy khối kiến thức tốt nghiệp theo hình thức làm Đồ án tốt nghiệp (Tài liệu 2 | Title: Thong-bao-SV-du-DK-lam-DA-TN-D22-Ky-thuat).",
+      "faithfulness": 0.0,
+      "answer_relevance": 1.0,
+      "context_recall": 0.0,
+      "context_precision": 0.771
+    },
+    {
+      "answer": "Thời gian đăng ký online làm đồ án tốt nghiệp của sinh viên D22 khối ngành kỹ thuật là từ 12h00 ngày 11/09/2026 đến 24h ngày 14/09/2026 (Nguồn: Tài liệu 1 | Title: Thong-bao-SV-du-DK-lam-DA-TN-D22-Ky-thuat).",
+      "faithfulness": 1.0,
+      "answer_relevance": 1.0,
+      "context_recall": 1.0,
+      "context_precision": 0.9
+    },
+    {
+      "answer": "Rất tiếc, trong các tài liệu được cung cấp không có thông tin về việc sinh viên D22 nên gửi email cho ai và hạn chót khi nào nếu có thắc mắc về kết quả học tập xét tốt nghiệp.",
+      "faithfulness": 1.0,
+      "answer_relevance": 0.9,
+      "context_recall": 0.0,
+      "context_precision": 0.587
+    },
+    {
+      "answer": "Mã học phần của Đồ án tốt nghiệp ngành Công nghệ thông tin là INT1478 và số tín chỉ là 6 tín chỉ (Nguồn: Tài liệu 1 | Title: Thong-bao-SV-du-DK-lam-DA-TN-D22-Ky-thuat).",
+      "faithfulness": 1.0,
+      "answer_relevance": 1.0,
+      "context_recall": 1.0,
+      "context_precision": 0.8
+    },
+    {
+      "answer": "Mã học phần Đồ án tốt nghiệp của ngành Công nghệ thông tin chất lượng cao là INT1478_CLC và có 8 tín chỉ (Nguồn: Thong-bao-SV-du-DK-lam-DA-TN-D22-Ky-thuat.md).",
+      "faithfulness": 1.0,
+      "answer_relevance": 1.0,
+      "context_recall": 1.0,
+      "context_precision": 0.8
+    },
+    {
+      "answer": "Mã học phần Đồ án tốt nghiệp ngành Khoa học máy tính khóa D22 là INT14175 và có 6 tín chỉ (Nguồn: Thong-bao-SV-du-DK-lam-DA-TN-D22-Ky-thuat.md).",
+      "faithfulness": 0.0,
+      "answer_relevance": 1.0,
+      "context_recall": 0.0,
+      "context_precision": 0.7
+    },
+    {
+      "answer": "Thời gian đăng ký học phần Thực tập tốt nghiệp online cho sinh viên D21 khối ngành kỹ thuật là từ ngày 26/5 đến ngày 28/5/2025 (Nguồn: Tài liệu 1 | Title: TB-Kehoach_Thuc_tap_TN_D21CQ-cac-nganh-ky-thuat-1).",
+      "faithfulness": 1.0,
+      "answer_relevance": 1.0,
+      "context_recall": 1.0,
+      "context_precision": 0.833
+    },
+    {
+      "answer": "Thời gian thực tập tốt nghiệp theo đề cương của sinh viên D21 khối ngành kỹ thuật kéo dài 07 tuần, từ ngày 30/6 đến ngày 15/8/2025. Riêng đối với các lớp E20CN, thời gian thực tập kéo dài 08 tuần, từ ngày 30/6 đến ngày 22/8/2025 [Tài liệu 1 | Title: TB-Kehoach_Thuc_tap_TN_D21CQ-cac-nganh-ky-thuat-1].",
+      "faithfulness": 1.0,
+      "answer_relevance": 1.0,
+      "context_recall": 1.0,
+      "context_precision": 0.763
+    },
+    {
+      "answer": "Thời gian bảo vệ Đồ án tốt nghiệp của sinh viên D21 khối ngành kỹ thuật là từ ngày 15/12 đến 28/12/2025 (Nguồn: Tài liệu 1, Tài liệu 2, Tài liệu 3 | Title: TB-Kehoach_Thuc_tap_TN_D21CQ-cac-nganh-ky-thuat-1).",
+      "faithfulness": 0.9,
+      "answer_relevance": 1.0,
+      "context_recall": 1.0,
+      "context_precision": 0.5
+    },
+    {
+      "answer": "Khi có vướng mắc trong quá trình thực tập tốt nghiệp D21, sinh viên liên hệ cô Đỗ Thúy Hằng ở phòng Giáo vụ để được hướng dẫn, giải đáp (Nguồn: TB-Kehoach_Thuc_tap_TN_D21CQ-cac-nganh-ky-thuat-1).",
+      "faithfulness": 1.0,
+      "answer_relevance": 1.0,
+      "context_recall": 1.0,
+      "context_precision": 0.75
+    },
+    {
+      "answer": "Thời gian đăng ký lịch học (thời khóa biểu) theo tiến trình rút gọn học kỳ 1 năm học 2026-2027 là ngày 16/06/2026 (Tài liệu 1 | Title: Đăng ký lịch học (thời khoá biểu) cho sinh viên khoá 2024, 2025 học theo tiến trình rút gọn của học kỳ I, năm học 2026-2027 – Giáo vụ – Học viện Công nghệ Bưu chính Viễn Thông).",
+      "faithfulness": 1.0,
+      "answer_relevance": 1.0,
+      "context_recall": 0.0,
+      "context_precision": 0.577
+    },
+    {
+      "answer": "Sinh viên đăng ký học theo tiến trình rút gọn không được phép đăng ký học lại, học cải thiện điểm trong đợt này. (Nguồn: Tài liệu 1 | Title: Đăng ký lịch học (thời khoá biểu) cho sinh viên khoá 2024, 2025 học theo tiến trình rút gọn của học kỳ I, năm học 2026-2027 – Giáo vụ – Học viện Công nghệ Bưu chính Viễn Thông)",
+      "faithfulness": 1.0,
+      "answer_relevance": 1.0,
+      "context_recall": 1.0,
+      "context_precision": 0.962
+    },
+    {
+      "answer": "Nếu sinh viên vi phạm không đăng ký đủ môn học theo tiến trình rút gọn, toàn bộ kết quả đăng ký trong thời gian này sẽ bị hủy và sinh viên sẽ phải đăng ký cùng với đợt của khóa ngành mình theo tiến trình chuẩn (Tài liệu 1).",
+      "faithfulness": 1.0,
+      "answer_relevance": 1.0,
+      "context_recall": 1.0,
+      "context_precision": 1.0
+    },
+    {
+      "answer": "Các lớp thời khóa biểu D24GA, D25GA, D23 (trừ các lớp CLC) học theo tiến trình rút gọn sẽ học tại cơ sở Ngọc Trục (Tài liệu 1).",
+      "faithfulness": 1.0,
+      "answer_relevance": 1.0,
+      "context_recall": 1.0,
+      "context_precision": 1.0
+    },
+    {
+      "answer": "Có, đối với sinh viên khóa 2021 khối ngành kỹ thuật, Học viện có tổ chức kế hoạch thực tập và thực hiện tích lũy khối kiến thức tốt nghiệp (TTTN, TLKKTTN) cho các lớp hệ Đại học chính quy khóa 2021-2026, bao gồm các ngành như ATTT, CNTT, CLC-CNTT, KTĐTVT, CNKTĐ-ĐT, CNĐPT (Nguồn: TB-Kehoach_Thuc_tap_TN_D21CQ-cac-nganh-ky-thuat-1.md).",
+      "faithfulness": 1.0,
+      "answer_relevance": 1.0,
+      "context_recall": 0.0,
+      "context_precision": 0.804
+    }
+  ],
+  "cases_b": [
+    {
+      "answer": "Điều kiện để sinh viên D22 khối ngành kỹ thuật được làm Đồ án tốt nghiệp là sinh viên phải hoàn thành báo cáo thực tập tốt nghiệp cuối khóa và không đang trong thời gian bị kỷ luật phải đình chỉ học tập. Sinh viên đáp ứng các điều kiện này sẽ được phép đăng ký thực hiện tích lũy khối kiến thức tốt nghiệp theo hình thức làm Đồ án tốt nghiệp (Tài liệu 3 | Title: Thong-bao-SV-du-DK-lam-DA-TN-D22-Ky-thuat).",
+      "faithfulness": 0.0,
+      "answer_relevance": 1.0,
+      "context_recall": 0.0,
+      "context_precision": 0.771
+    },
+    {
+      "answer": "Thời gian đăng ký online làm đồ án tốt nghiệp của sinh viên D22 khối ngành kỹ thuật là từ 12h00 ngày 11/09/2026 đến 24h ngày 14/09/2026 (Nguồn: Tài liệu 1 | Title: Thong-bao-SV-du-DK-lam-DA-TN-D22-Ky-thuat).",
+      "faithfulness": 1.0,
+      "answer_relevance": 1.0,
+      "context_recall": 1.0,
+      "context_precision": 0.9
+    },
+    {
+      "answer": "Sinh viên D22 có thắc mắc về kết quả học tập xét tốt nghiệp thì gửi email cho cô Hoàng Kim Cúc tại địa chỉ hkcuc@ptit.edu.vn. Hạn chót để gửi email là trước 16h30, nhưng ngày cụ thể không được nêu rõ trong ngữ cảnh đã cung cấp (Tài liệu 3 | Title: Thong-bao-SV-du-DK-lam-DA-TN-D22-Ky-thuat).",
+      "faithfulness": 0.0,
+      "answer_relevance": 0.9,
+      "context_recall": 0.0,
+      "context_precision": 0.587
+    },
+    {
+      "answer": "Mã học phần của Đồ án tốt nghiệp ngành Công nghệ thông tin là INT1478 và số tín chỉ là 6 tín chỉ (Nguồn: Tài liệu 1 | Title: Thong-bao-SV-du-DK-lam-DA-TN-D22-Ky-thuat).",
+      "faithfulness": 1.0,
+      "answer_relevance": 1.0,
+      "context_recall": 1.0,
+      "context_precision": 0.8
+    },
+    {
+      "answer": "Mã học phần Đồ án tốt nghiệp của ngành Công nghệ thông tin chất lượng cao là INT1478_CLC và có 8 tín chỉ (Nguồn: Tài liệu 1 | Title: Thong-bao-SV-du-DK-lam-DA-TN-D22-Ky-thuat).",
+      "faithfulness": 1.0,
+      "answer_relevance": 1.0,
+      "context_recall": 1.0,
+      "context_precision": 0.8
+    },
+    {
+      "answer": "Mã học phần Đồ án tốt nghiệp ngành Khoa học máy tính khóa D22 là INT14175 và có 6 tín chỉ (Nguồn: Tài liệu 3 | Title: Thong-bao-SV-du-DK-lam-DA-TN-D22-Ky-thuat).",
+      "faithfulness": 0.0,
+      "answer_relevance": 1.0,
+      "context_recall": 0.0,
+      "context_precision": 0.7
+    },
+    {
+      "answer": "Thời gian đăng ký học phần Thực tập tốt nghiệp online cho sinh viên D21 khối ngành kỹ thuật là từ ngày 26/5 đến ngày 28/5/2025 (Nguồn: Tài liệu 3 | Title: TB-Kehoach_Thuc_tap_TN_D21CQ-cac-nganh-ky-thuat-1).",
+      "faithfulness": 0.0,
+      "answer_relevance": 1.0,
+      "context_recall": 0.0,
+      "context_precision": 0.889
+    },
+    {
+      "answer": "Thời gian thực tập tốt nghiệp theo đề cương của sinh viên D21 khối ngành kỹ thuật kéo dài 07 tuần, từ ngày 30/6 đến 15/8/2025. Riêng đối với các lớp E20CN, thời gian thực tập kéo dài 08 tuần, từ ngày 30/6 đến 22/8/2025 [Nguồn: TB-Kehoach_Thuc_tap_TN_D21CQ-cac-nganh-ky-thuat-1.md].",
+      "faithfulness": 0.0,
+      "answer_relevance": 1.0,
+      "context_recall": 0.0,
+      "context_precision": 0.711
+    },
+    {
+      "answer": "Thời gian bảo vệ Đồ án tốt nghiệp của sinh viên D21 khối ngành kỹ thuật là từ ngày 15/12 đến 28/12/2025 [Tài liệu 1 | Title: TB-Kehoach_Thuc_tap_TN_D21CQ-cac-nganh-ky-thuat-1].",
+      "faithfulness": 1.0,
+      "answer_relevance": 1.0,
+      "context_recall": 1.0,
+      "context_precision": 0.5
+    },
+    {
+      "answer": "Khi có vướng mắc trong quá trình thực tập tốt nghiệp D21, sinh viên liên hệ cô Đỗ Thúy Hằng ở phòng Giáo vụ. (Nguồn: TB-Kehoach_Thuc_tap_TN_D21CQ-cac-nganh-ky-thuat-1)",
+      "faithfulness": 1.0,
+      "answer_relevance": 1.0,
+      "context_recall": 1.0,
+      "context_precision": 0.75
+    },
+    {
+      "answer": "Thông tin về thời gian cụ thể để đăng ký lịch học (thời khóa biểu) theo tiến trình rút gọn học kỳ 1 năm học 2026-2027 không được cung cấp trong các tài liệu đã cho.",
+      "faithfulness": 1.0,
+      "answer_relevance": 0.9,
+      "context_recall": 0.0,
+      "context_precision": 0.577
+    },
+    {
+      "answer": "Sinh viên đăng ký học theo tiến trình rút gọn không được phép đăng ký học lại, học cải thiện điểm trong đợt này (Tài liệu 1 | Title: Đăng ký lịch học (thời khoá biểu) cho sinh viên khoá 2024, 2025 học theo tiến trình rút gọn của học kỳ I, năm học 2026-2027 – Giáo vụ – Học viện Công nghệ Bưu chính Viễn Thông).",
+      "faithfulness": 1.0,
+      "answer_relevance": 1.0,
+      "context_recall": 1.0,
+      "context_precision": 0.962
+    },
+    {
+      "answer": "Nếu sinh viên vi phạm không đăng ký đủ môn học theo tiến trình rút gọn thì toàn bộ kết quả đăng ký trong thời gian này sẽ bị hủy và sinh viên khi đó phải đăng ký cùng với đợt của khóa ngành mình theo tiến trình chuẩn (Tài liệu 1).",
+      "faithfulness": 1.0,
+      "answer_relevance": 1.0,
+      "context_recall": 1.0,
+      "context_precision": 1.0
+    },
+    {
+      "answer": "Các lớp thời khóa biểu D24GA, D25GA, D23 (trừ các lớp CLC) học theo tiến trình rút gọn sẽ học tại cơ sở Ngọc Trục (Tài liệu 1).",
+      "faithfulness": 0.9,
+      "answer_relevance": 1.0,
+      "context_recall": 1.0,
+      "context_precision": 1.0
+    },
+    {
+      "answer": "Có, đối với sinh viên khóa 2021 khối ngành kỹ thuật, Học viện có tổ chức các học phần thay thế tốt nghiệp. Theo tài liệu \"TB-Kehoach_Thuc_tap_TN_D21CQ-cac-nganh-ky-thuat-1\", Học viện thông báo kế hoạch tổ chức Thực tập, thực hiện tích lũy khối kiến thức tốt nghiệp cho các lớp hệ Đại học chính quy khóa 2021-2026, bao gồm các ngành như ATTT, CNTT, CLC-CNTT, KTĐTVT, CNKTĐ-ĐT, CNĐPT (Nguồn: TB-Kehoach_Thuc_tap_TN_D21CQ-cac-nganh-ky-thuat-1.md).",
+      "faithfulness": 0.9,
+      "answer_relevance": 1.0,
+      "context_recall": 0.0,
+      "context_precision": 0.804
+    }
+  ]
+}
