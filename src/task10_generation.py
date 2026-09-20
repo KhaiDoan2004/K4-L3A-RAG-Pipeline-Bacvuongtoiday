@@ -90,7 +90,6 @@ def call_llm(system_prompt: str, user_message: str) -> str:
 
     elif provider == "anthropic":
         import anthropic
-
         api_key = os.getenv("ANTHROPIC_API_KEY")
         if not api_key:
             raise ValueError("ANTHROPIC_API_KEY chưa được thiết lập trong .env")
@@ -103,7 +102,6 @@ def call_llm(system_prompt: str, user_message: str) -> str:
             temperature=TEMPERATURE,
         )
         return response.content[0].text if response.content else ""
-
     else:
         raise ValueError(f"Unsupported LLM_PROVIDER: {provider}")
 

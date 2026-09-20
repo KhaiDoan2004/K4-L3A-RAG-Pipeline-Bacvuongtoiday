@@ -30,16 +30,13 @@ def retrieve(
     """Trả về hybrid hoặc pageindex SearchResult."""
     if not query.strip() or top_k <= 0:
         return []
-
     dense = semantic_search(query, top_k=top_k * 2)
     sparse = lexical_search(query, top_k=top_k * 2)
-
     hybrid = (
         rerank_rrf([dense, sparse], top_k=top_k)
         if use_reranking
         else dense[:top_k]
     )
-
     best_dense_score = dense[0]["score"] if dense else 0.0
     if best_dense_score < score_threshold:
         try:
@@ -48,7 +45,6 @@ def retrieve(
                 return fallback[:top_k]
         except Exception:
             pass
-
     return hybrid[:top_k]
 
 
